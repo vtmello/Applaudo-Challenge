@@ -1,0 +1,14 @@
+<template>
+    <div>
+        <lightning-card title="Expense List">
+            <div class="slds-p-around_medium">
+                <template if:true={expenses}>
+                    <lightning-datatable data={expenses} columns={columns} key-field="Id"   hide-checkbox-column></lightning-datatable>
+                </template>
+                <template if:false={expenses}>
+                    <p>No expenses found.</p>
+                </template>
+            </div>
+        </lightning-card>
+    </div>
+</template>

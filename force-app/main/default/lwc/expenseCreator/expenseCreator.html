@@ -1,0 +1,31 @@
+<template>
+    <lightning-card  title="Create an expense">
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item padding="around-small" size="12">
+                <div class="container">
+                    <template if:true={isLoading}>
+                      <lightning-spinner alternative-text="Loading"></lightning-spinner>
+                    </template>
+                    <lightning-record-edit-form object-api-name="Expense__c">
+                        <lightning-messages> </lightning-messages>
+                        <lightning-combobox
+                            name="category"
+                            label="Category"
+                            value={selectedValue}
+                            placeholder="Select a category"
+                            options={picklistValues}
+                            onchange={handleCategoryChange}>
+                        </lightning-combobox>
+                        
+        
+                        <lightning-input type="date" label="Expense Date" value={expenseDate} name="expense_Date" onchange={handleExpenseDateChange}></lightning-input>
+                        <lightning-input type="number" label="Amount" name="amount" value={amount}  formatter="currency" step="0.01" onchange={handleAmountChange}></lightning-input>
+                        <lightning-input type="checkbox" label="Monthly basis" name="monthly_basis" checked={isChecked} onchange={handleExpenseMonthlyChange}></lightning-input>
+                        <lightning-input type="checkbox" label="Weekly basis" name="weekly_basis" checked={isChecked} onchange={handleExpenseWeeklyChange}></lightning-input>
+                        <lightning-button class="slds-m-top_small" type="submit" label="Create" onclick={handleSubmit} ></lightning-button>
+                    </lightning-record-edit-form>
+                </div>
+            </lightning-layout-item> 
+        </lightning-layout>
+    </lightning-card>
+</template>
